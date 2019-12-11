@@ -1,0 +1,14 @@
+{
+  "name": "platzi-badges",
+  "version": "1.0.0",
+  "description": "platzi badges vanilla react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ivanjoz",
+  "license": "ISC",
+  "dependencies": {
+    "lokijs": "^1.5.8"
+  }
+}

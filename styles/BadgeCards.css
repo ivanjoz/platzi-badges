@@ -1,0 +1,41 @@
+.badge-card {
+    display: inline-flex;
+    width: calc(18vw + 36vh);
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px 0px #00000030;
+    margin-bottom: 1.1vw;
+}
+
+.badge-card__info {
+    padding: 0.8vmax 0.4vmax;
+}
+.badge-card__info .icon-twitter {
+    font-size: large;
+    color: #2e93ff;
+}
+.badge-card__info .twitter-user {
+    color: #0a79ea;
+}
+
+.badge-card__info--names {
+    font-size: large;
+    font-weight: 600;
+}
+
+.badge-card__image {
+    display: inline-flex;
+    padding: 0 1vw;
+}
+.badge-card__image > img {
+    margin: auto;
+    border-radius: 50%;
+}
+.Badges_buttons {
+
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 2vh;
+
+}
