@@ -49,11 +49,35 @@ async function handleBadgesAPI(req,res,uriPath){
   // Sent badges information
   if(req.method === 'GET' && !uriPath){
     let allBadges = BadgesColl.find({});
+    allBadges.reverse();
     res.writeHead(200, { 'Content-Type': 'application/json;charset=UTF-8' });
     res.write(JSON.stringify(allBadges));
     res.end();
+  }
+  // Post a new badge
+  else if(req.method === 'POST' && uriPath === 'new'){
+    console.log('You are posting a new badge.');
+    // Save badge in database
+    let BadgesColl = db.getCollection('badges');
+    
+    let bufferData = []
+    req.on('data', chunk => {
+      console.log(chunk);
+      bufferData.push(chunk)
+    })
+    req.on('end', async () => {
+      let newBadge = JSON.parse(bufferData);
+      console.log(newBadge);
+      let ok = validateBadgeInfo(newBadge);
+      if(!ok) return;
+      BadgesColl.insert(newBadge);
+      await db.saveDatabase();
+      res.writeHead(200, { 'Content-Type': 'application/json;charset=UTF-8' });
+      res.write(JSON.stringify({ok:'ok'}));
+      res.end();
+    });
   };
-}
+};
 
 const contentTypes = {
   '.js': 'text/javascript;charset=UTF-8',
@@ -97,5 +121,20 @@ function databaseInitialize(){
     db.saveDatabase();
   };  
 };
+
+
+// Function for validation badge info
+function validateBadgeInfo(badge){
+  if(
+    !badge.firstName || 
+    !badge.lastName ||
+    !badge.jobTitle ||
+    !badge.email ||
+    !badge.twitter
+  ) {
+    console.warn('Badge missing information.')
+    return false
+  } else return 'ok';
+}
 
 

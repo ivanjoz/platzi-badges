@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href=".">
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="libs/react.production.min.js"></script>
     <script src="libs/react-dom.production.min.js"></script>
     <script src="libs/react-router-dom.min.js"></script>
+    <script src="libs/md5.min.js"></script>
+    <script src="libs/htm.js"></script>
     <script>
         const e = React.createElement;
         const {Route, Link, Switch, BrowserRouter} = ReactRouterDOM;
+        const html = htm.bind(React.createElement);
     </script>
     <link rel="stylesheet" href="libs/bootstrap.min.css">
     <link rel="stylesheet" href="libs/fontello-embedded.css">

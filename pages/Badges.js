@@ -51,7 +51,6 @@ class Badges extends React.Component {
   }
 
   fetchData = async () =>{
-    return;
     this.setState({loading:true, error:null});
     try {
       let response = await fetch('badges-api');
@@ -67,10 +66,10 @@ class Badges extends React.Component {
   render(){
 
     if(this.state.loading === true){
-       return e(PageLoading);
+      return html`<${PageLoading}/>`;
     }
     if(this.state.error === true){
-      return `Error: ${this.state.error.message}`;
+      return html`<${PageError}/>`;
     }
 
     return e('div',{},
@@ -96,3 +95,4 @@ class Badges extends React.Component {
     )
   }
 }
+
